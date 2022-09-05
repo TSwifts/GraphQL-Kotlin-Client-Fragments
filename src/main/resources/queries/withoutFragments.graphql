@@ -1,0 +1,58 @@
+query exampleWithoutFragments($attributeName: String!) {
+    foo(attributeName: $attributeName) {
+        attributes {
+            __typename
+            name
+            description
+            tooltip
+
+            ...on MainEntityOne {
+                __typename
+                specialEntityFieldOne
+
+                subAttributes {
+                    __typename
+                    name
+                    description
+                    tooltip
+
+                    ...on SubEntityOne {
+                        specialFieldOne
+                    }
+
+                    ...on SubEntityTwo {
+                        specialFieldTwo
+                    }
+
+                    ...on SubEntityThree {
+                        specialFieldThree
+                    }
+                }
+            }
+
+            ...on MainEntityTwo {
+                __typename
+                specialEntityFieldTwo
+
+                subAttributes {
+                    __typename
+                    name
+                    description
+                    tooltip
+
+                    ...on SubEntityOne {
+                        specialFieldOne
+                    }
+
+                    ...on SubEntityTwo {
+                        specialFieldTwo
+                    }
+
+                    ...on SubEntityThree {
+                        specialFieldThree
+                    }
+                }
+            }
+        }
+    }
+}

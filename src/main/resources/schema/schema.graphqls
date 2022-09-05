@@ -1,0 +1,60 @@
+schema {
+    query: Query
+}
+
+interface Attribute {
+    name: String!
+    description: String!
+    tooltip: String!
+}
+
+interface SubAttribute {
+    name: String!
+    description: String!
+    tooltip: String!
+}
+
+type MainEntityOne implements Attribute {
+    name: String!
+    description: String!
+    tooltip: String!
+    specialEntityFieldOne: String
+    subAttributes: [SubAttribute!]
+}
+
+type MainEntityTwo implements Attribute {
+    name: String!
+    description: String!
+    tooltip: String!
+    specialEntityFieldTwo: String
+    subAttributes: [SubAttribute!]
+}
+
+type SubEntityOne implements SubAttribute {
+    name: String!
+    description: String!
+    tooltip: String!
+    specialFieldOne: String
+}
+
+type SubEntityTwo implements SubAttribute {
+    name: String!
+    description: String!
+    tooltip: String!
+    specialFieldTwo: String
+}
+
+type SubEntityThree implements SubAttribute {
+    name: String!
+    description: String!
+    tooltip: String!
+    specialFieldThree: String
+}
+
+type ComplexEntity {
+    attributes: [Attribute!]
+}
+
+type Query {
+    foo(attributeName: String!): ComplexEntity!
+}
